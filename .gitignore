@@ -1,2 +1,7 @@
+__pycache__
+*.pt
+*.json
+runs/
+weights/
 
-/weights
+wandb/
