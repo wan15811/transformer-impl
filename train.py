@@ -147,8 +147,8 @@ def get_ds(config):
     tokenizer_tgt = get_or_build_tokenizer(config, ds_raw, config['lang_tgt'])
 
     total_size = int(len(ds_raw))
-    train_ds_size = int(0.04 * len(ds_raw))
-    val_ds_size = int(0.01 * len(ds_raw))
+    train_ds_size = int(0.02 * len(ds_raw))
+    val_ds_size = int(0.005 * len(ds_raw))
     remaining_size = total_size - train_ds_size - val_ds_size
     train_ds_raw, val_ds_raw, _ = random_split(ds_raw, [train_ds_size, val_ds_size, remaining_size])
     
