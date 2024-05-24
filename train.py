@@ -147,9 +147,11 @@ def get_ds(config):
     tokenizer_tgt = get_or_build_tokenizer(config, ds_raw, config['lang_tgt'])
 
     # Keep 40% for training, 10% for validation
+    total_size = int(len(ds_raw))
     train_ds_size = int(0.1 * len(ds_raw))
     val_ds_size = int(0.02 * len(ds_raw))
-    train_ds_raw, val_ds_raw = random_split(ds_raw, [train_ds_size, val_ds_size])
+    remaining_size = total_size - train_ds_size - val_ds_size
+    train_ds_raw, val_ds_raw, _ = random_split(ds_raw, [train_ds_size, val_ds_size, remaining_size])
     
     print(f"Training set size: {len(train_ds_raw)}")
     print(f"Validation set size: {len(val_ds_raw)}")    
